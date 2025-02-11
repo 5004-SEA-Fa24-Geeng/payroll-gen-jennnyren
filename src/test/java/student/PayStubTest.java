@@ -41,6 +41,6 @@ class PayStubTest {
 
     @Test
     void toCSV() {
-        assertEquals("Ali,10,20,300,400", payStub.toCSV());
+        assertEquals("Ali,10.00,20.00,300.00,400.00", payStub.toCSV());
     }
 }

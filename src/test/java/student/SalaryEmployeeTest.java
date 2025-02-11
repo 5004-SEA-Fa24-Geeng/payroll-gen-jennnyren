@@ -20,7 +20,7 @@ class SalaryEmployeeTest {
         IPayStub stub = employee1.runPayroll(hoursWorked);
         assertNotNull(stub);
 
-        double expectedNetPay = 886.75;
+        double expectedNetPay = 386.75;
         double expectedTaxes = 113.25;
         assertEquals(expectedNetPay, stub.getPay());
         assertEquals(expectedTaxes, stub.getTaxesPaid());

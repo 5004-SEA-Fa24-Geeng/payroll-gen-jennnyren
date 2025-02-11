@@ -102,6 +102,15 @@ public abstract class Employee implements IEmployee {
     }
 
     /**
+     * Set employee type
+     * @param employeeType the type of the employee to be set
+     */
+    public String setEmployeeType(String employeeType) {
+        this.employeeType = employeeType;
+        return this.employeeType;
+    }
+
+    /**
      * Return the employee's year-to-date earnings
      * @return the employee's year-to-date earnings
      */
