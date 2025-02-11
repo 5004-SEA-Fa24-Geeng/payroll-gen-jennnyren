@@ -1,6 +1,7 @@
 package student;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /*
 * A generic Employee class
@@ -39,6 +40,7 @@ public abstract class Employee implements IEmployee {
      * Fixed tax rate used in payroll calculations
      */
     private static final BigDecimal TAX_RATE = new BigDecimal("0.2265");
+    private static final int round = 2;
 
     /**
      * Constructs a new employee with details
@@ -142,10 +144,11 @@ public abstract class Employee implements IEmployee {
         BigDecimal taxes = netBeforeTax.multiply(TAX_RATE);
         BigDecimal netPay = netBeforeTax.subtract(taxes);
 
-        this.ytdEarnings = BigDecimal.valueOf(this.ytdEarnings).add(netPay).doubleValue();
-        this.ytdTaxesPaid = BigDecimal.valueOf(this.ytdTaxesPaid).add(taxes).doubleValue();
+        this.ytdEarnings = BigDecimal.valueOf(this.ytdEarnings).add(netPay).setScale(round, RoundingMode.HALF_UP).doubleValue();
+        this.ytdTaxesPaid = BigDecimal.valueOf(this.ytdTaxesPaid).add(taxes).setScale(round, RoundingMode.HALF_UP).doubleValue();
 
-        return new PayStub(name, netPay.doubleValue(), taxes.doubleValue(), this.ytdEarnings, this.ytdTaxesPaid);
+        return new PayStub(name, netPay.doubleValue(), taxes.doubleValue(),
+                this.ytdEarnings, this.ytdTaxesPaid);
     }
     /**
      * Calculate the gross pay for employees
