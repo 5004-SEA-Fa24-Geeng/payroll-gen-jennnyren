@@ -21,7 +21,8 @@ public class SalaryEmployee extends Employee {
 
     @Override
     protected BigDecimal calculateGrossPay(double hoursWorked) {
-        BigDecimal totalPay = BigDecimal.valueOf(getPayRate()).multiply(BigDecimal.valueOf(24));
+        // Calculate daily pay by dividing by 30 (days of month)
+        BigDecimal totalPay = BigDecimal.valueOf(getPayRate()).divide(BigDecimal.valueOf(30));
         return totalPay;
     }
 }
